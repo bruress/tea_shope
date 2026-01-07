@@ -15,16 +15,36 @@ import Home from './pages/Home'
 import Catalog from './pages/Catalog';
 import Cart from './components/Cart';
 
+const API_URL = import.meta.env.VITE_API_URL;
+
 function App() {
   const [user, setUser] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [cartOpen, setCartOpen] = useState(false);
+  const openCart = () => setCartOpen(true);
+
+  useEffect(() => {
+    const fetchUser = async () => {
+      try {
+        const res = await axios.get(`${API_URL}/api/auth/me`, {withCredentials: true});
+        setUser(res.data);
+      } catch (err) {
+        setUser(null);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchUser();
+  }, []);
+
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/login" element={<Login setUser={setUser}/>}/>
-        <Route path="/register" element={<Register setUser={setUser}/>}/>
-        <Route path="/" element={<Home user={user}/>}/>
-        <Route path="/catalog/:id" element={<Catalog user={user} />} />
-        <Route path='/cart' element={<Cart user={user}/>}/>
+        <Route path="/login" element={user ? <Navigate to="/" /> : <Login setUser={setUser} />}/>
+        <Route path="/register" element={user ? <Navigate to="/" /> : <Register setUser={setUser} />} />
+        <Route path="/" element={<Home user={user} setUser={setUser} openCart={openCart} cartOpen={cartOpen} setCartOpen={setCartOpen}/>}/>
+        <Route path="/catalog/:id" element={<Catalog setUser={setUser} user={user} openCart={openCart}/>} />
+        <Route path='/cart' element={<Cart user={user} setUser={setUser} setCartOpen={setCartOpen}/>}/>
       </Routes>
     </BrowserRouter>
   );

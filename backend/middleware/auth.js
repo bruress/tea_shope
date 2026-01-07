@@ -11,9 +11,10 @@ export const protect = async (req, res, next) => {
 
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
+    // Указываем схему и реальные поля
     const user = await pool.query(
-      "SELECT id, name, email FROM users WHERE id = $1",
-      [decoded.id]
+      "SELECT user_id, user_name, email FROM tea_shop_schema.users WHERE user_id = $1",
+      [decoded.user_id] // токен должен содержать user_id, а не id
     );
 
     if (user.rows.length === 0) {

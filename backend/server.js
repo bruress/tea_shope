@@ -6,6 +6,8 @@ import authRoutes from './routes/auth.js';
 import subRoutes from './routes/sub.js';
 import catRoutes from './routes/catalog.js';
 import mailRoutes from './routes/mail.js';
+import cartRoutes from './routes/cart.js';
+import ordersRoutes from './routes/orders.js';
 
 dotenv.config();
 
@@ -24,6 +26,8 @@ app.use("/api/auth", authRoutes);
 app.use("/api/sub", subRoutes);
 app.use("/api/catalog", catRoutes);
 app.use("/api/mail", mailRoutes);
+app.use("/api/cart", cartRoutes);
+app.use("/api/orders", ordersRoutes);
 
 app.listen(port, () => {
     console.log('Server listening on: http://localhost:%s', port); // вывод в консоль

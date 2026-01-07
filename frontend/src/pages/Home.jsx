@@ -8,10 +8,10 @@ import CatalogTea from '../components/CatalogTea'
 import Subscription from '../components/Subscription'
 
 
-const Home = () => {
+const Home = ({user, setUser}) => {
     return (
         <>
-            <Header/>
+            <Header user={user} setUser={setUser}/>
             <Hero/>
             <AboutUs/>
             <CatalogTea/>

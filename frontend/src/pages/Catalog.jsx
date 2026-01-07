@@ -4,13 +4,19 @@ import Footer from "../components/Footer";
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Buy } from "../assets/Images";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
-const Catalog = () => {
+const Catalog = ({openCart, user, setUser}) => {
     const {id} = useParams();
     const [category, setCategory] = useState({});
     const [teas, setTea] = useState([]);
+
+    const addToCart = async (teaId) => {
+      await axios.post(`${API_URL}/api/cart`, {tea_id: teaId, quantity: 1}, {withCredentials: true});
+      openCart();
+    }
 
     const fetchProducts = async () => {
         const res = await axios.get(`${API_URL}/api/catalog/tea_type/${id}`);
@@ -24,8 +30,8 @@ const Catalog = () => {
 
     return (
         <div className="flex flex-col w-full min-h-screen">
-            <Header/>
-            <div className="flex flex-col justify-center items-center bg-center bg-[url(../src/assets/img/back-4.png)] w-full flex-1">
+            <Header user={user} setUser={setUser}/>
+            <div className="flex flex-col justify-center items-center bg-center bg-[url(../src/assets/img/back-4.png)] w-full flex-1 bg-cover">
                 <label className="font-cormorant text-[150px] font-bold text-[#0D3B24]">
                     {category.tea_type}</label>
                 <div className="mt-[60px] mb-[150px] grid grid-cols-3 gap-[200px] items-center justify-between">
@@ -35,6 +41,13 @@ const Catalog = () => {
                         key={product.tea_id}
                         className="flex-col rounded-[35px] flex justify-center items-center h-[600px] w-[400px] bg-[#6E8061]
                                     hover:h-[630px] hover:bg-[#526247] duration-500">
+                     
+                        <div className="ml-[250px] mb-[520px] flex items-center justify-center absolute w-[50px] h-[50px] bg-[#445C32] rounded-[15px] 
+                                        hover:cursor-pointer hover:bg-[#324722]"
+                                        onClick={() => addToCart(product.tea_id)}>
+                            <Buy/>
+                        </div>
+
                         <div className="rounded-[35px] bg-[#FFFBFB] w-[270px] h-[340px] hover:w-[280px] hover:h-[350px] duration-500">
                            {product.image_tea && (
                             <img
