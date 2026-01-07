@@ -30,15 +30,15 @@ const Header = ({user, setUser}) => {
                 <label className="pl-[8px] font-cormorant text-[48px] text-[#445C32] hover:cursor-pointer hover:text-[#0D3B24] duration-200">TEA SHOP</label>
             </Link>
             <div className="relative flex justify-center items-center">
+                 <IconCart className="mr-[50px] cursor-pointer w-10 h-10 text-[#445C32] hover:text-[#0D3B24] duration-500" />
                 <button
                     className='cursor-pointer text-[#445C32] hover:text-[#0D3B24] duration-500'
                     onMouseEnter={()=>setOpen(prev => !prev)}
                 >
-                    <ProfileImg />
+                <ProfileImg />
                 </button>
-                {/* <IconCart className="cursor-pointer w-10 h-10 text-[#445C32] hover:text-[#0D3B24] duration-500" /> */}
                 {open && (
-                    <div className='absolute top-[50px] flex flex-col bg-[#FCFBF7] rounded-[15px]'>
+                    <div className='ml-[90px] absolute top-[50px] flex flex-col bg-[#FCFBF7] rounded-[15px]'>
                     {user ? ( // пользователь залогинен
                         <button className='font-lora text-[18px] py-[8px] px-[80px] text-[#445C32] hover:text-[#0D3B24] duration-200 hover:bg-[#76845A] hover:text-[#ffffff] rounded-b-[15px]'
                         onClick={handleLogout}>Logout</button>

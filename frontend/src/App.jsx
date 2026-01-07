@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Home from './pages/Home'
 import Catalog from './pages/Catalog';
+import Cart from './components/Cart';
 
 function App() {
   const [user, setUser] = useState(null);
@@ -23,6 +24,7 @@ function App() {
         <Route path="/register" element={<Register setUser={setUser}/>}/>
         <Route path="/" element={<Home user={user}/>}/>
         <Route path="/catalog/:id" element={<Catalog user={user} />} />
+        <Route path='/cart' element={<Cart user={user}/>}/>
       </Routes>
     </BrowserRouter>
   );
