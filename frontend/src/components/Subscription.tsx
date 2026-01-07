@@ -34,9 +34,10 @@ const Subscription = () => {
 
     return (
         <section className="relative w-full min-h-screen">
-            <div className="absolute bg-[url(src/assets/img/back-2.png)] bg-center bg-cover w-full h-full">
+            <div className="absolute bg-[url(../src/assets/img/back-2.png)] bg-center bg-cover w-full h-full flex items-center justify-center">
                 
-                <div className="relative flex mt-[200px] justify-center flex-col items-center">
+                <div className="flex flex-col items-center w-[750px]">
+                   
                     <label className=" w-[750px] mb-[60px] text-center font-cormorant text-[100px] text-[#0D3B24] hover:text-[#0B1D14]
                             hover:text-[#0D3B24] hover:text-[105px] duration-500 font-bold">Subscribe to our Newsletter</label>
                     

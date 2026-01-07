@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { Logo } from "../assets/Images";
+import { Link } from "react-router-dom";
 
 const API_URL = import.meta.env.VITE_API_URL;
 
@@ -24,12 +25,14 @@ const Login = ({setUser}) => {
     };
 
     return (
-        <div className="absolute bg-cover bg-[url(src/assets/img/back-3.png)] w-full min-h-screen">
+        <div className="absolute bg-cover bg-[url(../src/assets/img/back-3.png)] w-full min-h-screen">
             <form onSubmit={handleSubmit}>
-                <div className="flex justify-center items-center mt-[30px]">
-                    <Logo/>
-                    <label className="text-[48px] font-cormorant text-[#0D3B24] ml-[8px]">TEA SHOP</label>
-                </div>
+
+                <Link to="/" className="flex justify-center items-center mt-[30px]">
+                    <Logo className="hover:cursor-pointer"/>
+                    <label className="hover:cursor-pointer text-[48px] font-cormorant text-[#0D3B24] ml-[8px]">TEA SHOP</label>
+                </Link>
+
                 <div className="mt-[190px] flex flex-col justify-center items-center">
                     <label className="text-[128px] font-cormorant text-[#0D3B24] font-semiboldbold">Sign in</label>
                     <input className="

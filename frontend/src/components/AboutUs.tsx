@@ -6,7 +6,7 @@ import {Aroma} from '../assets/Images'
 const AboutUs = () => {
     return (
         <section className="relative mt-[40px] w-full min-h-screen">
-            <div className="absolute bg-[url(src/assets/img/back-1.png)] bg-no-repeat bg-center bg-cover w-full h-full flex-col flex justify-center">
+            <div className="absolute bg-[url(../src/assets/img/back-1.png)] bg-no-repeat bg-center bg-cover w-full h-full flex-col flex justify-center">
                 <div className="flex items-end-safe flex-col mr-[200px] items-center mb-[300px]">
                     <label className="font-cormorant text-[#0D3B24] text-[150px] mb-[20px]
                     hover:text-[#0B1D14] hover:text-[155px] duration-500">
