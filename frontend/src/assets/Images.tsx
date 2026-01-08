@@ -9,6 +9,7 @@ import ProfileImg from './svg/profile.svg?react'
 import Arrow from './svg/arrow.svg?react'
 import Garbage from './svg/garbage.svg?react'
 import Buy from './svg/buy.svg?react'
+import Search from './svg/search.svg?react'
 
 import BlackTea from './img/black_tea.png'
 import GreenTea from './img/green_tea.png'
@@ -16,6 +17,6 @@ import FlowerTea from './img/flower_tea.png'
 import OrangeTea from './img/orange_tea.png'
 
 
-export {Mountain, Vitamin, Aroma, Leaf, Logo, IconCart, ProfileImg, Arrow, Garbage, Buy,
+export {Mountain, Vitamin, Aroma, Leaf, Logo, IconCart, ProfileImg, Arrow, Garbage, Buy, Search,
     BlackTea, GreenTea, FlowerTea, OrangeTea
 }

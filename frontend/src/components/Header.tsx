@@ -6,12 +6,15 @@ import { useNavigate } from 'react-router-dom';
 import axios, { formToJSON } from 'axios';
 import { Link } from 'react-router-dom';
 import Cart from './Cart';
+import { Search } from '../assets/Images';
 
 const API_URL = import.meta.env.VITE_API_URL;
 
 const Header = ({user, setUser}) => {
     const [open, setOpen] = useState(false);
     const [cartOpen, setCartOpen] = useState(false);
+    const [search, setSearch] = useState("");
+
     const navigate = useNavigate();
 
     const handleLogout = async() => {
@@ -25,6 +28,13 @@ const Header = ({user, setUser}) => {
         }
     };
 
+    const handleSearch = (e) => {
+        e.preventDefault();
+        if (!search.trim()) return;
+
+        navigate(`/catalog?search=${encodeURIComponent(search)}`);
+        setSearch("");
+    };
     return(
         <>
             <header className='bg-[#FCFBF7] w-full h-[120px] drop-shadow-lg drop-shadow-[#CEDCB6]/50 flex justify-between items-center py-[30px] px-[190px] relative z-10'>
@@ -32,6 +42,22 @@ const Header = ({user, setUser}) => {
                     <Logo className='text-[#445C32] w-[23px] h-[27px] self-center hover:text-[#0D3B24] duration-200'/>
                     <label className="pl-[8px] font-cormorant text-[48px] text-[#445C32] hover:cursor-pointer hover:text-[#0D3B24] duration-200">TEA SHOP</label>
                 </Link>
+
+                <form 
+                    onSubmit={handleSearch}
+                    className="flex items-center justify-center bg-white border border-[#CEDCB6] hover:border-[#91b375] rounded-[25px] px-[16px] py-[6px] w-[800px]">
+                    <input
+                        type="text"
+                        value={search}
+                        onChange={(e) => setSearch(e.target.value)}
+                        placeholder="search..."
+                        className="flex-1 outline-none font-lora text-[16px] text-[#0D3B24]"
+                    />
+                    <button type='submit'>
+                        <Search className="hover:cursor-pointer"/>
+                    </button>
+                </form>
+
                 <div className="relative flex justify-center items-center">
                     
                     <IconCart 

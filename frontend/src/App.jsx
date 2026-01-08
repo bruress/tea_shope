@@ -44,6 +44,7 @@ function App() {
         <Route path="/register" element={user ? <Navigate to="/" /> : <Register setUser={setUser} />} />
         <Route path="/" element={<Home user={user} setUser={setUser} openCart={openCart} cartOpen={cartOpen} setCartOpen={setCartOpen}/>}/>
         <Route path="/catalog/:id" element={<Catalog setUser={setUser} user={user} openCart={openCart}/>} />
+        <Route path="/catalog/" element={<Catalog setUser={setUser} user={user} openCart={openCart}/>} />        
         <Route path='/cart' element={<Cart user={user} setUser={setUser} setCartOpen={setCartOpen}/>}/>
       </Routes>
     </BrowserRouter>
